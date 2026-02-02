@@ -10,7 +10,7 @@
 
 <img width="993" height="527" alt="image" src="https://github.com/user-attachments/assets/1ae832a5-9bdd-45e8-b229-61fbae029203" />
 
-# Установка
+# Установка и обновление
 Загрузите необходимые пакеты:
 ```
 opkg update && opkg install curl wget-ssl
@@ -22,22 +22,11 @@ opkg update && opkg install curl wget-ssl
 Альтернативная команда (если не сработала выше):
 ```
 wget -qO /tmp/mixomo_openwrt_install.sh --no-check-certificate https://raw.githubusercontent.com/Internet-Helper/mixomo-openwrt/refs/heads/main/mixomo_openwrt_install.sh && chmod +x /tmp/mixomo_openwrt_install.sh && /tmp/mixomo_openwrt_install.sh && rm /tmp/mixomo_openwrt_install.sh
-```
-
-# Обновление
-Скрипт обновит Mihomo, hev-socks5-tunnel и мод MagiTrickle (оригинал пока зафиксирован).  
+```  
+  
+Повторный запуск обновит Mihomo, hev-socks5-tunnel и мод MagiTrickle (оригинал пока зафиксирован).  
 Ваши настройки Mihomo и списки сайтов MagiTrickle останутся нетронутыми.  
 Если появится новая версия конфигурации у MagiTrickle, то старая версия будет сохранена рядом как бэкап.
-
-Команда для обновления:
-```
-/bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/Internet-Helper/mixomo-openwrt/refs/heads/main/mixomo_openwrt_install.sh || wget -qO- --no-check-certificate https://raw.githubusercontent.com/Internet-Helper/mixomo-openwrt/refs/heads/main/mixomo_openwrt_install.sh)"
-```
-Альтернативная команда (если не сработала выше):
-```
-wget -qO /tmp/mixomo_openwrt_install.sh --no-check-certificate https://raw.githubusercontent.com/Internet-Helper/mixomo-openwrt/refs/heads/main/mixomo_openwrt_install.sh && chmod +x /tmp/mixomo_openwrt_install.sh && /tmp/mixomo_openwrt_install.sh && rm /tmp/mixomo_openwrt_install.sh
-```
-
 
 # Удаление
 Команда для удаления:
