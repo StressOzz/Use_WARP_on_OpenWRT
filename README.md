@@ -36,6 +36,8 @@ wget -qO /tmp/mixomo_openwrt_install.sh --no-check-certificate https://raw.githu
 Если появится новая версия конфигурации у MagiTrickle, то старая версия будет сохранена рядом как бэкап.
 
 # Удаление
+Пакеты `curl` и `wget-ssl` удалены не будут.  
+  
 Команда для удаления:
 ```
 /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/Internet-Helper/mixomo-openwrt/refs/heads/main/mixomo_openwrt_delete.sh || wget -qO- --no-check-certificate https://raw.githubusercontent.com/Internet-Helper/mixomo-openwrt/refs/heads/main/mixomo_openwrt_delete.sh)"
@@ -44,5 +46,3 @@ wget -qO /tmp/mixomo_openwrt_install.sh --no-check-certificate https://raw.githu
 ```
 wget -qO /tmp/mixomo_openwrt_delete.sh --no-check-certificate https://raw.githubusercontent.com/Internet-Helper/mixomo-openwrt/refs/heads/main/mixomo_openwrt_delete.sh && chmod +x /tmp/mixomo_openwrt_delete.sh && /tmp/mixomo_openwrt_delete.sh && rm /tmp/mixomo_openwrt_delete.sh
 ```
-
-Пакеты curl и wget-ssl удалены не будут.
