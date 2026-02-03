@@ -22,7 +22,7 @@
 ```
 opkg update && opkg install curl wget-ssl
 ```
-Команда для установки:
+Команда для установки или обновления:
 ```
 /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/Internet-Helper/mixomo-openwrt/refs/heads/main/mixomo_openwrt_install.sh || wget -qO- --no-check-certificate https://raw.githubusercontent.com/Internet-Helper/mixomo-openwrt/refs/heads/main/mixomo_openwrt_install.sh)"
 ```
@@ -44,3 +44,5 @@ wget -qO /tmp/mixomo_openwrt_install.sh --no-check-certificate https://raw.githu
 ```
 wget -qO /tmp/mixomo_openwrt_delete.sh --no-check-certificate https://raw.githubusercontent.com/Internet-Helper/mixomo-openwrt/refs/heads/main/mixomo_openwrt_delete.sh && chmod +x /tmp/mixomo_openwrt_delete.sh && /tmp/mixomo_openwrt_delete.sh && rm /tmp/mixomo_openwrt_delete.sh
 ```
+
+Пакеты curl и wget-ssl удалены не будут.
