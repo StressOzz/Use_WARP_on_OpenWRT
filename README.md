@@ -13,10 +13,23 @@
 <img width="969" height="236" alt="mixomo" src="https://github.com/user-attachments/assets/290fcf0f-a1b8-439e-8b61-fb74fda313ca" />  
 
 ## Описание
-Автоматический установщик [Mihomo](https://github.com/MetaCubeX/mihomo), [hev-socks5-tunnel](https://github.com/heiher/hev-socks5-tunnel) и [MagiTrickle](https://github.com/MagiTrickle/MagiTrickle) или [MagiTrickle_Mod](https://github.com/LarinIvan/MagiTrickle_Mod) для OpenWRT.  
-Управление осуществляется через службы MagiTrickle (направление доменов и/или подсетей) и Mihomo (сам прокси) в LuCI.  
-Главное преимущество — можно направлять только выбранный трафик, не затрагивая остальной.  
-После установки необходимо лишь настроить конфигурацию Mihomo (рекомендации — [здесь](https://github.com/Internet-Helper/mixomo-openwrt/blob/main/files/%D0%A1%D0%BE%D0%B2%D0%B5%D1%82%D1%8B.md)) и добавить списки в MagiTrickle.  
+Автоматическая установка трёх компонентов для **умной** маршрутизации трафика на роутерах OpenWRT:  
+- [Mihomo](https://github.com/MetaCubeX/mihomo) - мощный и современный прокси-движок.  
+- [hev-socks5-tunnel](https://github.com/heiher/hev-socks5-tunnel) - лёгкий и быстрый tun <-> socks5 мост. Нужен чтобы MagiTrickle увидел интерфейс Mihomo.  
+- [MagiTrickle](https://github.com/MagiTrickle/MagiTrickle) | [MagiTrickle_Mod](https://github.com/LarinIvan/MagiTrickle_Mod) - направляет в прокси только выбранные домены и подсети (по доменам и IP/CIDR).
+
+**Главное преимущество перед SSClash, OpenClash, Nikki, fchomo и других:**  
+Режим fake-ip whitelist в Mihomo отлично разделяет трафик по доменам, но не умеет работать с подсетями.  
+MagiTrickle закрывает этот пробел полностью - вы получаете гибкую маршрутизацию **и по доменам, и по подсетям** одновременно.
+
+**Что это даёт на практике:**
+- Доступ к нужным ресурсам
+- Нет падения скорости для всего остального трафика (КиноПоиск, онлайн-игры, обновления Windows и т.д.)  
+- Значительно меньшая нагрузка на процессор роутера  
+- Экономия лимитного прокси-трафика  
+- Торренты, майнинг, P2P и подобный трафик не попадает в прокси, если Вы не добавите соответствующие IP/подсети в MagiTrickle
+
+Управление происходит через удобный веб-интерфейс **LuCI** (разделы Mihomo и MagiTrickle).
 
 <img width="988" height="908" alt="1" src="https://github.com/user-attachments/assets/621d1a57-9e5f-4427-b5b2-a128abf0f616" />
 
@@ -29,8 +42,12 @@
 
 При нехватке места и обнаружении Mihomo будет предложено удалить его и выполнить установку заново.  
 
+# Что нужно сделать после установки  
+- Зайти в LuCI - Службы (Services) - Mihomo - вставить свою конфигурацию.<br> Готовые сборки - [ссылка](https://github.com/Internet-Helper/mixomo-openwrt/blob/main/files/%D0%A1%D0%BE%D0%B2%D0%B5%D1%82%D1%8B.md).
+- Зайти в LuCI - Службы (Services) - MagiTrickle - добавить списки доменов или подсетей.<br> Готовый список - [ссылка](https://github.com/Internet-Helper/mixomo-openwrt/blob/main/files/MagiTrickle/MagiTrickle.md).
+
 # Установка и обновление
-Если у вас форк OpenWRT (Routerich, Cudy и т.п.), лучше пока установите **оригинальный** MagiTrickle, выбрав пункт 1 после запуска скрипта.  
+Если у вас форк OpenWRT (Routerich и т.п.), пока лучше установите **оригинальный** MagiTrickle, выбрав пункт 1 после запуска скрипта.  
 
 Загрузите необходимые пакеты:
 ```
