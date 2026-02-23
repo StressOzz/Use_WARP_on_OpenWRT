@@ -56,11 +56,7 @@ opkg update && opkg install curl wget-ssl
 ```
 Команда для установки или обновления:
 ```
-/bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/Internet-Helper/mixomo-openwrt/refs/heads/main/mixomo_openwrt_install.sh || wget -qO- --no-check-certificate https://raw.githubusercontent.com/Internet-Helper/mixomo-openwrt/refs/heads/main/mixomo_openwrt_install.sh)"
-```
-Альтернативная команда (если не сработала выше):
-```
-wget -qO /tmp/mixomo_openwrt_install.sh --no-check-certificate https://raw.githubusercontent.com/Internet-Helper/mixomo-openwrt/refs/heads/main/mixomo_openwrt_install.sh && chmod +x /tmp/mixomo_openwrt_install.sh && /tmp/mixomo_openwrt_install.sh && rm /tmp/mixomo_openwrt_install.sh
+sh <(wget -O - https://raw.githubusercontent.com/StressOzz/mixomo-openwrt/refs/heads/main/mixomo_openwrt_install.sh)
 ```  
   
 Повторный запуск обновит Mihomo, hev-socks5-tunnel и мод MagiTrickle (оригинал пока зафиксирован).  
