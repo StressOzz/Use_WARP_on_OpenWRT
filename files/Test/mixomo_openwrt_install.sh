@@ -20,10 +20,7 @@ MIHOMO_BIN="/usr/bin/mihomo"
 
 detect_mihomo_arch() {
     local arch=$(uname -m)
-    local endian=$(cat /sys/kernel/debug/tracing/trace 2>/dev/null || \
-                   echo $(dd if=/proc/self/exe bs=1 count=1 skip=5 2>/dev/null | od -An -tu1 | tr -d ' '))
-    local elf_data=$(dd if=/bin/busybox bs=1 count=6 skip=5 2>/dev/null | od -An -tu1 | tr -d ' \n')
-    local endian_byte=$(dd if=/bin/busybox bs=1 count=1 skip=5 2>/dev/null | od -An -tu1 | tr -d ' ')
+    local endian_byte=$(hexdump -s 5 -n 1 -e '1/1 "%d"' /bin/busybox 2>/dev/null)
 
     case "$arch" in
         x86_64)  echo "amd64" ;;
