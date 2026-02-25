@@ -74,7 +74,7 @@ sh <(wget -O - https://raw.githubusercontent.com/StressOzz/mixomo-openwrt/refs/h
 
 # Сохраняем список доменов
 
-- Переходим по ссылке https://github.com/Internet-Helper/mixomo-openwrt/blob/main/files/MagiTrickle/config_from_internet_helper.mtrickle
+- Переходим по ссылке https://github.com/StressOzz/Use_WARP_on_OpenWRT/blob/main/files/MagiTrickle/config_from_internet_helper.mtrickle
 - Скачиваем файл `config_from_internet_helper.mtrickle`<img width="197" height="155" alt="Image" src="https://github.com/user-attachments/assets/e07b23d3-f7cb-4fb8-a272-f46199cdd990" />
 
 ---
