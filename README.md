@@ -69,7 +69,7 @@ sh <(wget -O - https://raw.githubusercontent.com/StressOzz/mixomo-openwrt/refs/h
 
 - Зайдите на роутер в **LuCI**, вкладка `Services` → `Magitrickle`
 - Или зайдите в браузере http://192.168.1.1:8080/
-- Тут может ВКЛ или ВЫКЛ списки, которые пойдут через WARP
+- Тут можете ВКЛ или ВЫКЛ списки, которые пойдут через WARP
 
 ---
 
