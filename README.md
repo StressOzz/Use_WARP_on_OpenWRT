@@ -17,12 +17,12 @@
 
 - для установки в **SSH** запустите скрипт:
 ```
-sh <(wget -O - https://raw.githubusercontent.com/StressOzz/mixomo-openwrt/refs/heads/main/mixomo_openwrt_install.sh)
+sh <(wget -O - https://raw.githubusercontent.com/StressOzz/WARP_on_OpenWRT/main/mixomo_openwrt_install.sh)
 ```
 
 - для удаления в **SSH** запустите скрипт:
 ```
-sh <(wget -O - https://raw.githubusercontent.com/StressOzz/mixomo-openwrt/refs/heads/main/mixomo_openwrt_delete.sh)
+sh <(wget -O - https://raw.githubusercontent.com/StressOzz/WARP_on_OpenWRT/main/mixomo_openwrt_delete.sh)
 ```
 
 ---
