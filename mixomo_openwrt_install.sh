@@ -1318,9 +1318,7 @@ echo
             local result=$?
             
             case $result in
-                0)  echo "--> Версии конфигурации совпадают ($OLD_VERSION). Восстанавление..."
-                    cp "$BACKUP_PATH" "$CONFIG_PATH"
-                    rm -f "$BACKUP_PATH"
+                0)  rm -f "$BACKUP_PATH"
                     ;;
                 1)  log_warn "Версия старой конфигурации ($OLD_VERSION) выше новой ($NEW_VERSION)! Бэкап сохранен рядом."
                     cp "$BACKUP_PATH" "${CONFIG_PATH}.backup"
