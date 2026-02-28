@@ -51,7 +51,6 @@ merge_lst_dir() {
 }
 
 clear
-
 say "$MAG" "Создаём список ItDog Allow Domains для MagiTrickle"
 
 fetch "https://api.github.com/repos/itdoginfo/allow-domains/tarball/main" "$REPO_TGZ"
@@ -62,17 +61,14 @@ tar -xzf "$REPO_TGZ" -C "$REPO_DIR"
 ROOTDIR="$(find "$REPO_DIR" -mindepth 1 -maxdepth 1 -type d | head -n 1)"
 [ -n "${ROOTDIR:-}" ] || { say "$RED" "ОШИБКА: не нашёл корневую папку в архиве"; exit 1; }
 
-say "$YEL" "Вытаскивем списки Russia / Categories / Services / Subnets/IPv4/IPv6"
+say "$YEL" "Вытаскивем списки Categories / Services / Subnets/IPv4/IPv6"
 merge_lst_dir "$ROOTDIR/Categories"
 merge_lst_dir "$ROOTDIR/Services"
 merge_lst_dir "$ROOTDIR/Subnets/IPv4"
 merge_lst_dir "$ROOTDIR/Subnets/IPv6"
 
-INSIDE="$WORK/inside-kvas.lst"
-fetch "https://raw.githubusercontent.com/itdoginfo/allow-domains/refs/heads/main/Russia/inside-kvas.lst" "$INSIDE"
-
 LIST_COUNT="$(find "$WORK" -maxdepth 1 -name '*.lst' | wc -l | tr -d ' ')"
-say "$MAG" "Всего файлов в работе:" "$YEL""$LIST_COUNT"
+say "$MAG" "Всего файлов в работе: $YEL$LIST_COUNT"
 
 awk '
 function trim(s){ sub(/^[ \t\r\n]+/,"",s); sub(/[ \t\r\n]+$/,"",s); return s }
@@ -86,7 +82,6 @@ FNR==1{
   fn=FILENAME
   sub(/^.*\//,"",fn); sub(/\.lst$/,"",fn)
   grp=titlecase(tolower_ascii(fn))
-  if (grp=="Inside-kvas") grp="Russia-Inside"
 }
 {
   line=$0
@@ -111,7 +106,7 @@ FNR==1{
 ' "$WORK"/*.lst > "$WORK/tagged.tsv"
 
 TAGGED_TOTAL="$(wc -l < "$WORK/tagged.tsv" 2>/dev/null || echo 0)"
-say "$MAG" "Всего строк:" "$YEL""$TAGGED_TOTAL"
+say "$MAG" "Всего строк: $YEL$TAGGED_TOTAL"
 say "$CYN" "Создаём общий список. Ждите..."
 
 awk -F '\t' '
@@ -145,7 +140,7 @@ function rand_color(    h){
   return "#" h
 }
 BEGIN{
-  OFS=""
+  OFS=""  # чтобы awk не вставлял пробелы между print-аргументами [web:243]
   print "{\"groups\":["
   first_group=1
 }
@@ -198,4 +193,4 @@ END{
 ' "$WORK/tagged.tsv" 2> "$WORK/report.tsv" > "$OUT"
 
 say "$GRN" "Готово!"
-say "$GRN" "Файл сохранён: ""$RST""$OUT"
+say "$GRN" "Файл сохранён: $OUT"
