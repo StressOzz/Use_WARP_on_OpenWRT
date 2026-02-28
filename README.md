@@ -77,7 +77,7 @@ sh <(wget -O - https://raw.githubusercontent.com/StressOzz/WARP_on_OpenWRT/main/
 
 # Добавление списков
 
-При установке появится выбор списков для **Выбор списка для MagiTrickle**
+При установке появится **Выбор списка для MagiTrickle**
 
 <img width="333" height="217" alt="{C30EFB5C-87D8-4334-9C9A-B40998D02FC9}" src="https://github.com/user-attachments/assets/b5a506c7-bdd9-4667-828a-59f411407a93" />
 
@@ -88,8 +88,6 @@ sh <(wget -O - https://raw.githubusercontent.com/StressOzz/WARP_on_OpenWRT/main/
 - список Default:
 
 <img width="383" height="485" alt="{CD9857EC-FD45-4052-97AE-6DE728CD2F08}" src="https://github.com/user-attachments/assets/c2a0e285-e15c-48c9-9671-16115410126a" />
-
-
 
 ## Добавление списков вручную
 
