@@ -1181,6 +1181,34 @@ EOF
     /etc/init.d/firewall restart
 }
 
+
+select_magitrickle_config() {
+echo
+log_step "Выбор списка для MagiTrickle"
+
+  local choice=""
+  local URL_DEFAULT="https://raw.githubusercontent.com/StressOzz/Use_WARP_on_OpenWRT/refs/heads/main/files/MagiTrickle/config.yaml"
+  local URL_ITDOG="https://raw.githubusercontent.com/StressOzz/Use_WARP_on_OpenWRT/refs/heads/main/files/MagiTrickle/configAD.yaml"
+
+  echo
+  echo "  1) ITDog Allow Domains"
+  echo "  2) Default"
+  echo
+
+  while true; do
+    printf "Введите номер [1-2]: "
+    read -r choice
+    choice="${choice:-2}"
+
+    case "$choice" in
+      1) MAGITRICKLE_CONFIG_URL="$URL_ITDOG"; break ;;
+      2) MAGITRICKLE_CONFIG_URL="$URL_DEFAULT"; break ;;
+      *) echo "Неверный выбор. Введите 1 или 2." ;;
+    esac
+  done
+}
+
+
 install_magitrickle() {
     
     echo "--> Подготовка к установке MagiTrickle..."
@@ -1209,10 +1237,27 @@ install_magitrickle() {
             opkg install "$IPK" >/dev/null 2>&1 || return 1
             rm -f "$IPK"
 			
-			
-wget -q -O /etc/magitrickle/state/config.yaml \
-"https://raw.githubusercontent.com/StressOzz/Use_WARP_on_OpenWRT/refs/heads/main/files/MagiTrickle/config.yaml"
-			
+
+
+
+
+select_magitrickle_config
+
+CONFIGPATH="/etc/magitrickle/state/config.yaml"
+
+wget -q -O "$CONFIGPATH" "$MAGITRICKLE_CONFIG_URL"
+if [ $? -ne 0 ]; then
+  echo "Ошибка: не удалось скачать список!"
+  echo "URL: $MAGITRICKLE_CONFIG_URL"
+  return 1
+fi
+
+if [ ! -s "$CONFIGPATH" ]; then
+  echo "Ошибка: config пустой/не создан: $CONFIGPATH"
+  return 1
+fi
+echo
+            echo "--> Установка списка для MagiTrickle..."
             echo "--> Включение автозапуска MagiTrickle..."
             /etc/init.d/magitrickle enable >/dev/null 2>&1
             echo "--> Запуск MagiTrickle..."
@@ -1343,7 +1388,8 @@ finalize_install() {
 
 main() {
 	clear
-    log_done "Скрипт установки Mixomo OpenWRT $SCRIPT_VERSION от Internet Helper"
+    log_done "Скрипт установки Mixomo OpenWRT $SCRIPT_VERSION"
+	log_done "        от Internet Helper (StressOzz Remix)"
 	echo ""
 	
     log_step "[1/3] Установка Mihomo"
