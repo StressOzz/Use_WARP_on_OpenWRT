@@ -4,14 +4,24 @@
 
 Генерируем **WARP** в TГ боте - https://t.me/warp_generator_bot
 
-<img width="477" height="121" alt="Image" src="https://github.com/user-attachments/assets/f5385211-4ae6-4132-97a5-864ee6daa4b6" />
+<img width="350" height="121" alt="Image" src="https://github.com/user-attachments/assets/f5385211-4ae6-4132-97a5-864ee6daa4b6" />
 
 - Затем на `Подтвердить` (можно выбрать другую локацию для экспериментов)
 
-<img width="461" height="1293" alt="Image" src="https://github.com/user-attachments/assets/c6f512ff-d4e9-4668-821b-c8a17bf58d92" />
+<img width="381" height="1293" alt="Image" src="https://github.com/user-attachments/assets/c6f512ff-d4e9-4668-821b-c8a17bf58d92" />
 
 - Скачайте `WARP*.conf`
 <img width="300" height="497" alt="Image" src="https://github.com/user-attachments/assets/a0a6fa0b-3992-4572-9fe5-5b7fab52419c" />
+
+---
+Генерируем **WARP** на сайте - https://warp-generator.github.io/warp/
+
+- Выбираем один из 3 вариантов, при нажатии произойдёт скачивание `WARP*.conf` файла...
+<img width="280" height="549" alt="{927F7FEB-A180-4E97-8BA8-DCC1512EFD74}" src="https://github.com/user-attachments/assets/499096ce-d0a0-48c1-8fa5-ae2547bb929f" />
+
+- При нажатии на шестерёнку в углу, можно сменить DNS и выбрать локацию
+<img width="300" height="1441" alt="{A26E8E6A-0DC5-4F59-9F00-C77D7CD258B8}" src="https://github.com/user-attachments/assets/c9934736-a2ff-47c8-813f-16f4c0f750bc" />
+
 
 ---
 
